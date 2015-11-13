@@ -1,0 +1,21 @@
+{
+  "name": "Bluecraft",
+  "description": "bluecraft packages json",
+  "main": "",
+  "authors": [
+    "Charles-Louis Allizard"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/charleslouis/bluecraft-keystone",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "foundation": "~5.5.3"
+  }
+}
