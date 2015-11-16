@@ -18,7 +18,28 @@ var sass = require('gulp-sass'),
 
 
 var paths = {
-	'src':['./models/**/*.js','./routes/**/*.js', 'keystone.js', 'package.json'],
+	'scripts':{
+		front: {
+			sources: [
+				'./bower_components/modernizr/modernizr.js',
+				'./bower_components/jquery/dist/jquery.js',
+				'./bower_components/jquery-placeholder/jquery.placeholder.js',
+				'./bower_components/jquery.cookie/jquery.cookie.js',
+				'./bower_components/fastclick/lib/fastclick.js',
+				'./bower_components/foundation/js/foundation/foundation.js'
+			],
+			output: {
+				folder: './public/js/',
+				mainScriptsFile: 'scripts.js'
+			}
+		},
+		back: [
+				'./models/**/*.js',
+				'./routes/**/*.js',
+				'keystone.js',
+				'package.json'
+		]
+	},
 	'style': {
 		all: './public/styles/**/*.scss',
 		output: './public/styles/'
@@ -29,13 +50,12 @@ var paths = {
 
 // gulp lint
 gulp.task('lint', function(){
-	gulp.src(paths.src)
+	gulp.src(paths.scripts.front.sources, paths.scripts.front.output)
 		.pipe(jshint())
 		.pipe(jshint.reporter(jshintReporter));
 });
 
-
- 
+// gulp saas:dev
 gulp.task('sass:dev', function () {
   gulp.src(paths.style.all)
 	.pipe(sourcemaps.init())
@@ -44,7 +64,7 @@ gulp.task('sass:dev', function () {
 	.pipe(livereload());
 });
  
-
+// gulp saas:build
 gulp.task('sass:build',function () {
   gulp.src(paths.style.all)
     .pipe(sass())
@@ -54,24 +74,46 @@ gulp.task('sass:build',function () {
 });
 
 
-// gulp watcher for lint
-gulp.task('watch:lint', function () {
-	gulp.src(paths.src)
-		.pipe(watch())
-		.pipe(jshint())
-		.pipe(jshint.reporter(jshintReporter));
-})
-;
+// jsconcat:dev
+gulp.task('jsconcat:dev', function() {
+  return gulp.src(paths.scripts.front.sources)
+    .pipe(concat(paths.scripts.front.output.mainScriptsFile))
+    .pipe(gulp.dest(paths.scripts.front.output.folder))
+    .pipe(livereload());
+});
+
+
+// gulp watcher for sass
 gulp.task('watch:sass', function () {
 	livereload.listen();
 	gulp.watch(paths.style.all, ['sass:dev']);
 });
 
 
+// gulp watcher for lint
+gulp.task('watch:lint', function () {
+	gulp.src(paths.scripts)
+		.pipe(watch())
+		.pipe(jshint())
+		.pipe(jshint.reporter(jshintReporter));
+})
+;
+
+// gulp watcher for js
+gulp.task('watch:js', function () {
+	livereload.listen();
+	gulp.watch(paths.scripts.front.sources, ['jsconcat:dev']);
+});
+
+// gulp run Keystone
 gulp.task('runKeystone', shell.task('node keystone.js'));
+
+// gulp watch sass, lint & js
 gulp.task('watch', [
   'watch:sass',
-  'watch:lint'
+  'watch:lint',
+  'watch:js'
 ]);
 
+// default task (watch & run Keystone)
 gulp.task('default', ['watch', 'runKeystone']);
