@@ -2,13 +2,12 @@
 
 var gulp = require('gulp');
 
-var jshint = require('gulp-jshint');
-var jshintReporter = require('jshint-stylish');
-var watch = require('gulp-watch');
-var shell = require('gulp-shell');
+var jshint = require('gulp-jshint'),
+	jshintReporter = require('jshint-stylish'),
+	watch = require('gulp-watch'),
+	shell = require('gulp-shell');
 
 var sass = require('gulp-sass'),
-    // autoprefixer = require('gulp-autoprefixer'),
     minifycss = require('gulp-minify-css'),
     rename = require('gulp-rename'),
     sourcemaps = require('gulp-sourcemaps'),
@@ -20,7 +19,7 @@ var sass = require('gulp-sass'),
 var paths = {
 	'scripts':{
 		front: {
-			sources: [
+			vendors: [
 				'./bower_components/modernizr/modernizr.js',
 				'./bower_components/jquery/dist/jquery.js',
 				'./bower_components/jquery-placeholder/jquery.placeholder.js',
@@ -28,6 +27,7 @@ var paths = {
 				'./bower_components/fastclick/lib/fastclick.js',
 				'./bower_components/foundation/js/foundation/foundation.js'
 			],
+			sources: './public/js/**/*.js',
 			output: {
 				folder: './public/js/',
 				mainScriptsFile: 'scripts.js'
@@ -50,7 +50,7 @@ var paths = {
 
 // gulp lint
 gulp.task('lint', function(){
-	gulp.src(paths.scripts.front.sources, paths.scripts.front.output)
+	gulp.src(paths.scripts.front.sources, paths.scripts.back)
 		.pipe(jshint())
 		.pipe(jshint.reporter(jshintReporter));
 });
@@ -92,7 +92,7 @@ gulp.task('watch:sass', function () {
 
 // gulp watcher for lint
 gulp.task('watch:lint', function () {
-	gulp.src(paths.scripts)
+	gulp.src(paths.scripts.front.sources, paths.scripts.back)
 		.pipe(watch())
 		.pipe(jshint())
 		.pipe(jshint.reporter(jshintReporter));
@@ -105,8 +105,6 @@ gulp.task('watch:js', function () {
 	gulp.watch(paths.scripts.front.sources, ['jsconcat:dev']);
 });
 
-// gulp run Keystone
-gulp.task('runKeystone', shell.task('node keystone.js'));
 
 // gulp watch sass, lint & js
 gulp.task('watch', [
@@ -114,6 +112,10 @@ gulp.task('watch', [
   'watch:lint',
   'watch:js'
 ]);
+
+
+// gulp run Keystone
+gulp.task('runKeystone', shell.task('node keystone.js'));
 
 // default task (watch & run Keystone)
 gulp.task('default', ['watch', 'runKeystone']);
