@@ -27,7 +27,7 @@ var paths = {
 				'./bower_components/fastclick/lib/fastclick.js',
 				'./bower_components/foundation/js/foundation/foundation.js'
 			],
-			sources: './public/js/**/*.js',
+			sources: ['./public/js/custom/*.js'],
 			output: {
 				folder: './public/js/',
 				mainScriptsFile: 'scripts.js'
@@ -50,8 +50,8 @@ var paths = {
 
 // ----------   LINT   -----
 // 
-gulp.task('lint', function(){
-	gulp.src(paths.scripts.front.sources, paths.scripts.back)
+gulp.task('lintBack', function(){
+	gulp.src(paths.scripts.back)
 		.pipe(jshint())
 		.pipe(jshint.reporter(jshintReporter));
 });
@@ -79,7 +79,9 @@ gulp.task('sass:build',function () {
 // ----------   JSCONCAT   -----
 // 
 gulp.task('jsconcat:dev', function() {
-  return gulp.src(paths.scripts.front.sources)
+  return gulp.src(paths.scripts.front.vendors, paths.scripts.front.sources)
+	.pipe(jshint())
+	.pipe(jshint.reporter(jshintReporter))
     .pipe(concat(paths.scripts.front.output.mainScriptsFile))
     .pipe(gulp.dest(paths.scripts.front.output.folder))
     .pipe(livereload());
@@ -102,8 +104,8 @@ gulp.task('watch:sass', function () {
 });
 
 // gulp watcher for lint
-gulp.task('watch:lint', function () {
-	gulp.src(paths.scripts.front.sources, paths.scripts.back)
+gulp.task('watch:lintBack', function () {
+	gulp.src(paths.scripts.back)
 		.pipe(watch())
 		.pipe(jshint())
 		.pipe(jshint.reporter(jshintReporter));
@@ -118,7 +120,7 @@ gulp.task('watch:js', function () {
 // gulp watch sass, lint & js
 gulp.task('watch', [
   'watch:sass',
-  'watch:lint',
+  'watch:lintBack',
   'watch:js'
 ]);
 
