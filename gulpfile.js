@@ -1,4 +1,7 @@
+'use strict';
+
 var gulp = require('gulp');
+
 var jshint = require('gulp-jshint');
 var jshintReporter = require('jshint-stylish');
 var watch = require('gulp-watch');
