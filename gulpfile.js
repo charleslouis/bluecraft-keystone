@@ -25,7 +25,8 @@ var paths = {
 				'./bower_components/jquery-placeholder/jquery.placeholder.js',
 				'./bower_components/jquery.cookie/jquery.cookie.js',
 				'./bower_components/fastclick/lib/fastclick.js',
-				'./bower_components/foundation/js/foundation/foundation.js'
+				'./bower_components/foundation/js/foundation/foundation.js',
+				'./bower_components/foundation/js/foundation/foundation.topbar.js'
 			],
 			sources: ['./public/js/custom/*.js'],
 			output: {
@@ -43,7 +44,11 @@ var paths = {
 	'style': {
 		all: './public/styles/**/*.scss',
 		output: './public/styles/'
+	},
+	'jadeFiles': {
+		templates: './templates/**/*.jade'
 	}
+
 
 };
 
@@ -80,8 +85,8 @@ gulp.task('sass:build',function () {
 // 
 gulp.task('jsconcat:dev', function() {
   return gulp.src(paths.scripts.front.vendors, paths.scripts.front.sources)
-	.pipe(jshint())
-	.pipe(jshint.reporter(jshintReporter))
+	// .pipe(jshint())
+	// .pipe(jshint.reporter(jshintReporter))
     .pipe(concat(paths.scripts.front.output.mainScriptsFile))
     .pipe(gulp.dest(paths.scripts.front.output.folder))
     .pipe(livereload());
@@ -117,11 +122,17 @@ gulp.task('watch:js', function () {
 	gulp.watch(paths.scripts.front.sources, ['jsconcat:dev']);
 });
 
+gulp.task('watch:jadeHtml', function () {
+  livereload.listen();
+  gulp.watch(paths.jadeFiles.templates).on('change', livereload.changed);
+});
+
 // gulp watch sass, lint & js
 gulp.task('watch', [
   'watch:sass',
   'watch:lintBack',
-  'watch:js'
+  'watch:js',
+  'watch:jadeHtml'
 ]);
 
 
