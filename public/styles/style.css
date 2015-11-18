@@ -6386,3 +6386,10 @@ th.hide-for-touch {
     display: table-cell !important; }
   th.show-for-print {
     display: table-cell !important; } }
+
+.footer {
+  background: #333333 none repeat scroll 0% 0%;
+  padding: 24px 0px 10px;
+  color: #FAFAFA; }
+  .footer a {
+    color: #EFEFEF; }

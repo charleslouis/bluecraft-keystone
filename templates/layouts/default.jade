@@ -80,28 +80,23 @@ html
 
 
 		//- FOOTER
-		footer.row#footer
+		footer.footer#footer: .row
+			.medium-4.medium-4.push-8.columns
+				ul.home-social
+					li
+						a.twitter(href='#') twitter
+					li
+						a.facebook(href='#') FB
+					li
+						a.mail(href='#') mail
+			.medium-8.medium-8.pull-4.columns
+				//- a.zurb-logo.regular(href='http://www.zurb.com')
+				ul.zurb-links
+					each link in navLinks
+						li(class=(section == link.key ? 'active' : null)): a(href=link.href)= link.label
 
-			.row
-				.medium-4.medium-4.push-8.columns
-					ul.home-social
-						li
-							a.twitter(href='http://www.twitter.com/#')
-						li
-							a.facebook(href='http://www.facebook.com/')
-						li
-							a.mail(href='http://zurb.com/contact')
-				.medium-8.medium-8.pull-4.columns
-					//- a.zurb-logo.regular(href='http://www.zurb.com')
-					ul.zurb-links
-					li
-						a(href='#') About
-					li
-						a(href='#') Blog
-					li
-						a(href='/keystone/contact') Contact
-
-					p.copyright © 2015 Bluecraft.io - All rights reserved
+				p.copyright &copy; #{new Date().getFullYear()} Bluecraft.io - All rights reserved - 
+					a.mentions(href='#') Mentions légales
 
 
 
