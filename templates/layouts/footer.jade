@@ -1,0 +1,19 @@
+//- FOOTER
+.footer#footer: .row
+	.medium-8.columns
+		//- a.zurb-logo.regular(href='http://www.zurb.com')
+		ul
+			each link in navLinks
+				li(class=(section == link.key ? 'active' : null)): a(href=link.href)= link.label
+	.medium-4.columns
+		ul
+			li
+				a.twitter(href='#') twitter
+			li
+				a.facebook(href='#') FB
+			li
+				a.mail(href='#') mail
+
+	.columns
+		p.text-center.copyright &copy; #{new Date().getFullYear()} Bluecraft.io - All rights reserved - 
+				a(href='#') Mentions légales

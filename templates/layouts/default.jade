@@ -1,5 +1,6 @@
 include ../mixins/flash-messages
 
+
 doctype html
 html
 
@@ -36,29 +37,7 @@ html
 	body
 
 		//- HEADER
-		#header: .container
-
-			//- Customise your site's navigation by changing the navLinks Array in ./routes/middleware.js
-			//- ... or completely change this header to suit your design.
-
-			nav.top-bar(data-topbar='', role='navigation')
-				ul.title-area
-					li.name
-						h1
-							a(href='/') Accueil
-					li.toggle-topbar.menu-icon
-						a(href='#')
-							span Menu
-				section.top-bar-section
-					ul.right
-						each link in navLinks
-							li(class=(section == link.key ? 'active' : null)): a(href=link.href)= link.label	
-						if user
-							if user.canAccessKeystone
-								li: a(href='/keystone') Open Keystone
-							li: a(href='/keystone/signout') Sign Out
-						else
-							li: a(href='/keystone/signin') Sign In							
+		include header
 
 		//- BODY
 		#body
@@ -80,26 +59,7 @@ html
 
 
 		//- FOOTER
-		footer.footer#footer: .row
-			.medium-4.medium-4.push-8.columns
-				ul.home-social
-					li
-						a.twitter(href='#') twitter
-					li
-						a.facebook(href='#') FB
-					li
-						a.mail(href='#') mail
-			.medium-8.medium-8.pull-4.columns
-				//- a.zurb-logo.regular(href='http://www.zurb.com')
-				ul.zurb-links
-					each link in navLinks
-						li(class=(section == link.key ? 'active' : null)): a(href=link.href)= link.label
-
-				p.copyright &copy; #{new Date().getFullYear()} Bluecraft.io - All rights reserved - 
-					a.mentions(href='#') Mentions légales
-
-
-
+		include footer
 
 
 		//- JAVASCRIPT
