@@ -1,9 +1,13 @@
 extends ../layouts/default
 
+
+block intro
+	h1 Salut
+
+
 block content
-	.container: .jumbotron
+	.row: .jumbotron
 		img(src='/images/logo.svg', width='160')
-		h1 Welcome
 		p This is your new <a href='http://keystonejs.com' target='_blank'>KeystoneJS</a> website.
 		p It includes the latest versions of
 			| <a href='http://getbootstrap.com/' target='_blank'>Bootstrap</a>

@@ -1,15 +1,14 @@
 extends ../layouts/default
 
 block intro
-	.container
 		h1 Contact Us
-		
+	
 block content
-	.container
+	.row
 		if enquirySubmitted
 			h3 Thanks for getting in touch.
 		else
-			.row: .small-8.medium-6
+			.small-8.medium-6
 				form(method='post')
 					input(type='hidden', name='action', value='contact')
 					.form-group(class=validationErrors.name ? 'has-error' : null)

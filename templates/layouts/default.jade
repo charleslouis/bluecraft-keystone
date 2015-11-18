@@ -68,7 +68,8 @@ html
 			//- Remember to include it in your templates when you override the intro and content blocks!
 
 			//- The Intro block appears above flash messages (used for temporary information display)
-			block intro
+			.row: .small-8.medium-6
+				block intro
 
 			//- Flash messages allow you to display once-off status messages to users, e.g. form
 			//- validation errors, success messages, etc.
@@ -79,10 +80,31 @@ html
 
 
 		//- FOOTER
-		.container: #footer
+		footer.row#footer
 
-			//- You don't _have_ to include a link saying your site is powered by KeystoneJS, but we appreciate it!
-			p Powered by <a href="http://keystonejs.com" target="_blank">KeystoneJS</a>.
+			.row
+				.medium-4.medium-4.push-8.columns
+					ul.home-social
+						li
+							a.twitter(href='http://www.twitter.com/#')
+						li
+							a.facebook(href='http://www.facebook.com/')
+						li
+							a.mail(href='http://zurb.com/contact')
+				.medium-8.medium-8.pull-4.columns
+					//- a.zurb-logo.regular(href='http://www.zurb.com')
+					ul.zurb-links
+					li
+						a(href='#') About
+					li
+						a(href='#') Blog
+					li
+						a(href='/keystone/contact') Contact
+
+					p.copyright © 2015 Bluecraft.io - All rights reserved
+
+
+
 
 
 		//- JAVASCRIPT
