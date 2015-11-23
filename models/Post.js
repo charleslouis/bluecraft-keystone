@@ -16,6 +16,7 @@ Post.add({
 	state: { type: Types.Select, options: 'draft, published, archived', default: 'draft', index: true },
 	author: { type: Types.Relationship, ref: 'User', index: true },
 	publishedDate: { type: Types.Date, index: true, dependsOn: { state: 'published' } },
+<<<<<<< HEAD
 	
 
 
@@ -26,6 +27,13 @@ Post.add({
 		extended: { type: Types.Html, wysiwyg: true, height: 400 }
 	},
 	
+=======
+	image: { type: Types.CloudinaryImage },
+	content: {
+		brief: { type: Types.Html, wysiwyg: true, height: 150 },
+		extended: { type: Types.Html, wysiwyg: true, height: 400 }
+	},
+>>>>>>> d5b79fc5c55281218f6f3375abc3b7815240e8c1
 	categories: { type: Types.Relationship, ref: 'PostCategory', many: true }
 });
 
