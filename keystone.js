@@ -11,7 +11,7 @@ var keystone = require('keystone');
 
 keystone.init({
 
-	'name': 'bluecraft',
+	'name': 'Bluecraft project',
 	'brand': 'bluecraft',
 	
 	'sass': 'public',
@@ -23,10 +23,12 @@ keystone.init({
 	'emails': 'templates/emails',
 	
 	'auto update': true,
+ 	'mongo': 'mongodb://localhost/bluecraft',
 	'session': true,
 	'auth': true,
+  	'cookie secret': '(itisabeautifulsecret)',	
 	'user model': 'User'
-
+	
 });
 
 // Load your project's Models
@@ -90,6 +92,7 @@ keystone.set('email tests', require('./routes/emails'));
 keystone.set('nav', {
 	'posts': ['posts', 'post-categories'],
 	'galleries': 'galleries',
+	'enquiries': 'enquiries',
 	'enquiries': 'enquiries',
 	'users': 'users'
 });
