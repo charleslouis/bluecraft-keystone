@@ -26,7 +26,8 @@ keystone.init({
  	'mongo': 'mongodb://localhost/bluecraft',
 	'session': true,
 	'auth': true,
-  	'cookie secret': '(itisabeautifulsecret)'	
+  	'cookie secret': '(itisabeautifulsecret)',
+  	'user model': 'User'	
 	
 });
 
