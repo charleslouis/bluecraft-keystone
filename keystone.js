@@ -11,25 +11,14 @@ var keystone = require('keystone');
 
 keystone.init({
 
-<<<<<<< HEAD
 	'name': 'Bluecraft',
-	'brand': 'Bluecraft',
-=======
-	'name': 'bluecraft',
-	'brand': 'bluecraft',
->>>>>>> d5b79fc5c55281218f6f3375abc3b7815240e8c1
-	
+	'brand': 'Bluecraft',	
 	'sass': 'public',
 	'static': 'public',
 	'favicon': 'public/favicon.ico',
 	'views': 'templates/views',
 	'view engine': 'jade',
-	
-<<<<<<< HEAD
-=======
 	'emails': 'templates/emails',
-	
->>>>>>> d5b79fc5c55281218f6f3375abc3b7815240e8c1
 	'auto update': true,
 	'session': true,
 	'auth': true,
@@ -55,9 +44,6 @@ keystone.set('locals', {
 // Load your project's Routes
 
 keystone.set('routes', require('./routes'));
-
-<<<<<<< HEAD
-=======
 
 // Setup common locals for your emails. The following are required by Keystone's
 // default email templates, you may remove them if you're using your own.
@@ -95,16 +81,12 @@ keystone.set('email rules', [{
 
 keystone.set('email tests', require('./routes/emails'));
 
->>>>>>> d5b79fc5c55281218f6f3375abc3b7815240e8c1
 // Configure the navigation bar in Keystone's Admin UI
 
 keystone.set('nav', {
 	'posts': ['posts', 'post-categories'],
 	'galleries': 'galleries',
-<<<<<<< HEAD
-=======
 	'enquiries': 'enquiries',
->>>>>>> d5b79fc5c55281218f6f3375abc3b7815240e8c1
 	'users': 'users'
 });
 

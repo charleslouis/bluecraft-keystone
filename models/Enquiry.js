@@ -24,8 +24,6 @@ Enquiry.add({
 	createdAt: { type: Date, default: Date.now }
 });
 
-<<<<<<< HEAD
-=======
 Enquiry.schema.pre('save', function(next) {
 	this.wasNew = this.isNew;
 	next();
@@ -63,7 +61,6 @@ Enquiry.schema.methods.sendNotificationEmail = function(callback) {
 	
 };
 
->>>>>>> d5b79fc5c55281218f6f3375abc3b7815240e8c1
 Enquiry.defaultSort = '-createdAt';
 Enquiry.defaultColumns = 'name, email, enquiryType, createdAt';
 Enquiry.register();
