@@ -19,6 +19,6 @@ Member.add({
 });
 
 
-Project.relationship({ ref: 'Page', path: 'membersTeam' });
+Member.relationship({ ref: 'Page', path: 'membersTeam' });
 
 Member.register();

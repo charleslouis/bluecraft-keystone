@@ -61,20 +61,12 @@ Page.add({
 	phone: { type: String, dependsOn: { template: 'contact'} },
 	mail: { type: String, dependsOn: { template: 'contact'} },
 	skype: { type: String, dependsOn: { template: 'contact'} },
-	socialNetworks: {
-		linkedIn:{
-			name: {type: Types.String, dependsOn: { template: 'contact'} },
-			url: {type: Types.Url, dependsOn: { template: 'contact'} },
-		},
-		twitter:{
-			name: {type: Types.String, dependsOn: { template: 'contact'} },
-			url: {type: Types.Url, dependsOn: { template: 'contact'} },
-		},
-		facebook:{
-			name: {type: Types.String, dependsOn: { template: 'contact'} },
-			url: {type: Types.Url, dependsOn: { template: 'contact'} },
-		}				
-	},
+	nameLinkedIn: { type: String, dependsOn: { template: 'contact'} },
+	urlLinkedIn: { type: Types.Url, dependsOn: { template: 'contact'} },
+	nameTwitter: { type: String, dependsOn: { template: 'contact'} },
+	urlTwitter: { type: Types.Url, dependsOn: { template: 'contact'} },
+	nameFacebook: { type: String, dependsOn: { template: 'contact'} },
+	urlFacebook: { type: Types.Url, dependsOn: { template: 'contact'} },
 
 	// socialNetworks: [
 	// 	type: Types.Array,
