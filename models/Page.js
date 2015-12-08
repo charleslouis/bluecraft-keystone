@@ -49,12 +49,7 @@ Page.add({
 // 	TEAM
 	titleIntroTeam: { type: String, dependsOn: { template: 'team'} },
 	textIntroTeam: { type: Types.Html, wysiwyg: true, height: 300, dependsOn: { template: 'team'} },
-	itemTeam: {
-		title: { type: String, dependsOn: { template: 'team'} },
-		job: { type: String, dependsOn: { template: 'team'} },
-		image: { type: Types.CloudinaryImage, dependsOn: { template: 'team'} },
-		bio: {type: Types.Html, wysiwyg: true, height: 300, dependsOn: { template: 'team'} },
-	},
+	membersTeam: { type: Types.Relationship, ref: 'Project', many: true, dependsOn: { template: 'team'} },
 
 // 	CONTACT
 	titleContact: { type: String, dependsOn: { template: 'contact' } },
@@ -103,14 +98,14 @@ Page.add({
 	},
 
 	buttonNav: { 
-		title: { type: String, dependsOn: { template: 'what-we-do'} },
+		title: { type: String, dependsOn: { template: 'legal'} },
 		linkUrl_1: { 
-			link: {type: String, dependsOn: { template: 'what-we-do'} },
-			url: {type: Types.Url, dependsOn: { template: 'what-we-do'} },
+			link: {type: String, dependsOn: { template: 'legal'} },
+			url: {type: Types.Url, dependsOn: { template: 'legal'} },
 		},
 		linkUrl_2: { 
-			link: {type: String, dependsOn: { template: 'what-we-do'} },
-			url: {type: Types.Url, dependsOn: { template: 'what-we-do'} },
+			link: {type: String, dependsOn: { template: 'legal'} },
+			url: {type: Types.Url, dependsOn: { template: 'legal'} },
 		},		
 	}	
 	
