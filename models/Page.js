@@ -18,17 +18,17 @@ Page.add({
 	publishedDate: { type: Types.Date, index: true, dependsOn: { state: 'published' } },
 	template: { type: Types.Select, options: 'page, about, team, contact, what-we-do', default: 'page'},
 	image: { type: Types.CloudinaryImage },
+	//ABOUT 
+	aboutSomeField: { type: String, dependsOn: { template: 'about' } },
+
+	// TEAM
+	teamSomeField: { type: String, dependsOn: { template: 'team' } },
+
 	content: {
 		brief: { type: Types.Html, wysiwyg: true, height: 150 },
-		// chapeau: { type: Types.Html, wysiwyg: true, height: 300 },
-		// extended: { type: Types.Html, wysiwyg: true, height: 400 }
-	},
-	someField: { type: String, dependsOn: { template: 'about' } },
-	// whatWeDo: [{
-	// 	title: { type: String },
-	// 	content: { type: Types.Html, wysiwyg: true, height: 150 },
-	// 	dependsOn: { template: 'what-we-do' }
-	// }]
+		extended: { type: Types.Html, wysiwyg: true, height: 400 }
+	},	
+
 });
 
 Page.schema.virtual('content.full').get(function() {
